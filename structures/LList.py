@@ -44,6 +44,8 @@ class LList(object):
         return LListIterator(self.head)
         
     def insert(self, data):
+        '''Insert a node to the end of the list
+        '''
         node = LListNode(data)
         if not self.head:
             self.head = node
@@ -54,6 +56,13 @@ class LList(object):
             self.tail = node
             temp.follow = node
 
+    def remove(self):
+        '''Remove a node from the front of the list
+        '''
+        node = self.head
+        self.head = self.head.follow
+        return node.data
+        
 def main():            
     print 'List of integers'
     iList = LList()
@@ -64,12 +73,24 @@ def main():
     for data in iList:
         print data, 
     print ''
+    iVal = iList.remove()
+    print 'Removed ' + str(iVal)
+    print 'List of remaining integers'
+    for data in iList:
+        print data, 
+    print ''
 
     print 'List of strings'
     sList = LList()
     sList.insert('abc')
     sList.insert('yz')
     sList.insert('lmn')
+    for data in sList:
+        print data, 
+    print ''
+    sVal = sList.remove()
+    print 'Removed ' + sVal
+    print 'List of remaining strings'
     for data in sList:
         print data, 
     print ''
