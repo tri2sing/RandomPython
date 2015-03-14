@@ -59,9 +59,20 @@ class LList(object):
     def remove(self):
         '''Remove a node from the front of the list
         '''
-        node = self.head
-        self.head = self.head.follow
-        return node.data
+        # If the list is empty
+        if not self.head:
+            return None
+         
+        data = self.head.data
+        
+        # If the list has one node
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.follow
+        
+        return data
         
 def main():            
     print 'List of integers'
