@@ -46,4 +46,30 @@ class BST(object):
                 self._put(current.right, key, val)
             else:
                 current.right = BSTNode(key, val, parent = current)
-            
+     
+    # To use bst[key] = val, we define the setitem to call the put method
+    def __setitem__(self, key, val):
+        self.put(key, val)       
+        
+    
+    def get(self, key):
+        if self.root:
+            return self._get(self.root, key) 
+        else:
+            return None
+        
+    def _get(self, current, key):
+        if not current:
+            return None
+        elif key == current.key:
+            return current.val
+        elif key < current.key:
+            return self._get(current.left, key)
+        else:
+            return self._get(current.right, key)
+        
+    # To use val = bst[key], we define the getitem to call the put method
+    def __getitme__(self, key):
+        return self.get(key)
+    
+    
