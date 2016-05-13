@@ -69,7 +69,7 @@ class BST(object):
             return self._get(current.right, key)
         
     # To use val = bst[key], we define the getitem to call the put method
-    def __getitme__(self, key):
+    def __getitem__(self, key):
         return self.get(key)
     
     
