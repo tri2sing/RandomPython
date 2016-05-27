@@ -80,6 +80,10 @@ if __name__ == '__main__':
     num_vertices = 2
     edges = [[1, 0]]
     print s.findOrder(num_vertices, edges)
+    num_vertices = 4
+    edges = [[1,0],[2,0],[3,1],[3,2]]
+    print s.findOrder(num_vertices, edges)
+    
     
     
     
