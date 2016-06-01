@@ -5,10 +5,10 @@ Created on May 9, 2016
 '''
 
 class Solution(object):
-    def __init__(self, N):
+    def __init__(self, num_nodes):
         # result[i] = j => a queen is placed at row i, column j.
-        self.N = N
-        self.result = [-1] * N
+        self.N = num_nodes
+        self.result = [-1] * num_nodes
         
     def safePlace(self, row, col):
         '''Check if it is possible to place queen at (row, col) '''
@@ -38,19 +38,19 @@ class Solution(object):
         
         
 if __name__ == '__main__':
-    N = 4
-    s = Solution(N)
+    num_nodes = 4
+    s = Solution(num_nodes)
     s.arrangeQueenInRow(0)
     print 64 * '*'
-    N = 5
-    s = Solution(N)
+    num_nodes = 5
+    s = Solution(num_nodes)
     s.arrangeQueenInRow(0)
     print 64 * '*'
-    N = 6
-    s = Solution(N)
+    num_nodes = 6
+    s = Solution(num_nodes)
     s.arrangeQueenInRow(0)
     print 64 * '*'
-    N = 7
-    s = Solution(N)
+    num_nodes = 7
+    s = Solution(num_nodes)
     s.arrangeQueenInRow(0)
         
