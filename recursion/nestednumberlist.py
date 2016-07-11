@@ -7,10 +7,9 @@ Created on Jul 11, 2016
 import numbers
 
 class NestedNumberList(object):
-    def recursive_sum(self, nested_num_list = []):
-        ''' '''
+    def recursive_sum(self, nstd_num_list=[]):
         total = 0
-        for item in nested_num_list:
+        for item in nstd_num_list:
             if isinstance(item, numbers.Number):
                 total += item
             elif isinstance(item, list):
@@ -19,3 +18,16 @@ class NestedNumberList(object):
                 raise TypeError('Wrong type in the input')
         return total
     
+    def recursive_max(self, nstd_num_list=[]):
+        current_max = float("-inf")
+        for item in nstd_num_list:
+            if isinstance(item, numbers.Number):
+                if item > current_max:
+                    current_max = item
+            elif isinstance(item, list):
+                child_max = self.recursive_max(item)
+                if child_max > current_max:
+                    current_max = child_max
+            else:
+                raise TypeError('Wrong type in the input')
+        return current_max       
