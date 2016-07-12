@@ -30,8 +30,8 @@ def print_dir_tree(dir_path, prefix=''):
         print prefix + entry
         full_name = os.path.join(dir_path, entry)
         if os.path.isdir(full_name):
-            print_dir_tree(full_name, prefix + '|-')
+            print_dir_tree(full_name, '  ' + prefix)
     
 
 if __name__ == '__main__':
-    print_dir_tree('/Users/sadhik1/Documents/wspython/PyFp')
+    print_dir_tree('/Users/sadhik1/Google Drive')
