@@ -37,7 +37,7 @@ class FractalTree(object):
         delta_y = trunk_size * math.sin(heading) 
         (start_x, start_y) = start_coordinates
         end_coordinates = (start_x + delta_x, start_y + delta_y)
-        pygame.draw.line(self.main_surface, color, start_coordinates, end_coordinates)
+        pygame.draw.line(self.main_surface, color, start_coordinates, end_coordinates, 2)
         pygame.draw.circle(self.main_surface, color, (int(start_coordinates[0]), int(start_coordinates[1])), 3)
                 
         if levels > 0:
@@ -56,7 +56,7 @@ class FractalTree(object):
                 self.draw_tree(levels, self.surface_size * 0.5, 0.29, (self.surface_size // 2, self.surface_size // 2), heading, heading_change)
                 pygame.display.update()
                 self.clock.tick(120)
-                heading += 10
+                #heading += 10
         
     def exit_program(self):
         pygame.quit()
