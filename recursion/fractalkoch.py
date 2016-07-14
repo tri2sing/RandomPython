@@ -10,6 +10,7 @@ import turtle
 class FractalKoch(object):
     def __init__(self):
         self.window = turtle.Screen()
+        self.window.title('Koch Fractal')
         self.drawer = turtle.Turtle()
         self.drawer.penup()
         self.drawer.goto(-200, 100) # very customized to my machine
@@ -34,5 +35,6 @@ class FractalKoch(object):
             
 if __name__ == '__main__':
     fk = FractalKoch()
-    fk.draw_koch_snowflake(3, 360)
+    fk.draw_koch_curve(1, 360)
+#    fk.draw_koch_snowflake(1, 360)
     fk.wait_for_user()
