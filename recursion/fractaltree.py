@@ -18,10 +18,9 @@ class FractalTree(object):
             (128, 128, 128), (128, 0, 0), (0, 128, 0), (0, 0, 128),
             (128, 0, 128), (128, 128, 0), (0, 128, 128)]
         self.num_colors = len(self.colors)
-
         pygame.display.update()
         
-    def draw_tree(self, levels, size, ratio, start_coordinates, heading, heading_change):
+    def _draw_tree(self, levels, size, ratio, start_coordinates, heading, heading_change):
         '''
             levels: number of levels to draw the tree.
             size: total size of the tree.
@@ -41,10 +40,12 @@ class FractalTree(object):
         pygame.draw.circle(self.main_surface, color, (int(start_coordinates[0]), int(start_coordinates[1])), 3)
                 
         if levels > 0:
-            self.draw_tree(levels - 1, size * (1 - ratio), ratio, end_coordinates, heading - heading_change, heading_change)
-            self.draw_tree(levels - 1, size * (1 - ratio), ratio, end_coordinates, heading + heading_change, heading_change)
+            self._draw_tree(levels - 1, size * (1 - ratio), ratio, end_coordinates, heading - heading_change, heading_change)
+            self._draw_tree(levels - 1, size * (1 - ratio), ratio, end_coordinates, heading + heading_change, heading_change)
 
-    def run_event_loop(self, levels, heading, heading_change):
+    def draw_tree(self, levels, heading, heading_change):
+        """Render the tree on the display on mouse button click. 
+        """
         while True:
             evt = pygame.event.poll()
             if evt.type == pygame.QUIT:
@@ -53,9 +54,9 @@ class FractalTree(object):
                 break
             elif evt.type == pygame.MOUSEBUTTONUP:
                 self.main_surface.fill((255, 255, 255))
-                self.draw_tree(levels, self.surface_size * 0.5, 0.29, (self.surface_size // 2, self.surface_size // 2), heading, heading_change)
+                self._draw_tree(levels, self.surface_size * 0.5, 0.29, (self.surface_size // 2, self.surface_size // 2), heading, heading_change)
                 pygame.display.update()
-                self.clock.tick(120)
+                self.clock.tick(60)
                 #heading += 10
         
     def exit_program(self):
@@ -64,11 +65,11 @@ class FractalTree(object):
         
 if __name__ == '__main__':
     ft = FractalTree()
-    ft.run_event_loop(7, 0, -math.pi / 2)
-    ft.run_event_loop(7, 0, -math.pi / 3)
-    ft.run_event_loop(7, 0, -math.pi / 4)
-    ft.run_event_loop(7, 0, -math.pi / 6)
-    ft.run_event_loop(7, 0, 0)
+    ft.draw_tree(7, 0, -math.pi / 2)
+    ft.draw_tree(7, 0, -math.pi / 3)
+    ft.draw_tree(7, 0, -math.pi / 4)
+    ft.draw_tree(7, 0, -math.pi / 6)
+    ft.draw_tree(7, 0, 0)
     ft.exit_program()
     
     
