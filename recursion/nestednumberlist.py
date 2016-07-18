@@ -45,4 +45,16 @@ class NestedNumberList(object):
             else:
                 raise TypeError('Wrong type in the input')
         return current_min       
-        
+    
+    def recursive_target_count(self, target, nstd_num_list=[]):
+        count = 0
+        for item in nstd_num_list:
+            if item == target:
+                count += 1
+            elif isinstance(item, list):
+                count += self.recursive_target_count(target, item)
+        return count
+    
+    
+    
+            
