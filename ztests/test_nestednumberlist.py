@@ -43,3 +43,12 @@ def test_recursive_target_count(nstd_num_list):
     assert(nstd_num_list.recursive_target_count(5, [[5, [5, [1, 5], 5], 5], [5, 6]]) == 6)
     assert(nstd_num_list.recursive_target_count("a",
          [["this",["a",["thing","a"],"a"],"is"], ["a","easy"]]) == 4)
+
+def test_recursive_flatten(nstd_num_list):    
+    assert(nstd_num_list.recursive_flatten([2,9,[2,1,13,2],8,[2,6]]) == [2,9,2,1,13,2,8,2,6])
+    assert(nstd_num_list.recursive_flatten([[9,[7,1,13,2],8],[7,6]]) == [9,7,1,13,2,8,7,6])
+    assert(nstd_num_list.recursive_flatten([[9,[7,1,13,2],8],[2,6]]) == [9,7,1,13,2,8,2,6])
+    assert(nstd_num_list.recursive_flatten([["this",["a",["thing"],"a"],"is"],["a","easy"]]) == ["this","a","thing","a","is","a","easy"])
+    assert(nstd_num_list.recursive_flatten([]) == [])
+    
+    

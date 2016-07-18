@@ -55,6 +55,16 @@ class NestedNumberList(object):
                 count += self.recursive_target_count(target, item)
         return count
     
+    def recursive_flatten(self, nstd_num_list):
+        result = []
+        for item in nstd_num_list:
+            if isinstance(item, list):
+                result.extend(self.recursive_flatten(item))
+            else:
+                result.append(item)
+        return result
     
+        
+        
     
             
